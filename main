@@ -1,0 +1,68 @@
+#include <xc.inc>
+
+extrn	motor_Setup, move_motor1, move_motor2	    ; external motor subroutines
+extrn	LCD_Setup, LCD_Write_Message, LCD_Write_Hex ; external LCD subroutines
+extrn	ADC_Setup, ADC_Read			    ; exernal anolog to digital conveter subroutines
+
+psect	udata_acs   ; reserve data space in access ram
+counter:       ds 1 ; reserve one byte for a counter variable
+delay_count:   ds 1 ; reserve one byte for counter in the delay routine
+best_low_word: ds 1 ; reserve one byte for the best high word
+best_high_word:ds 1 ; reserve one byt for the byte low word
+high_word:     ds 1 ; reserve one byte for high word of LDR input
+low_word:      ds 1 ; reserve one byte for low word of LDR input
+    
+    
+psect	code, abs	
+rst: 	org 0x0
+ 	goto	setup
+
+	; ******* Programme FLASH read Setup Code ***********************
+setup:	bcf	CFGS	; point to Flash program memory  
+	bsf	EEPGD 	; access Flash program memory
+	call	motor_Setup	; setup motors
+	call	LCD_Setup	; setup UART
+	call	ADC_Setup	; setup ADC
+	goto	start
+	
+	
+; ******* Main programme ****************************************
+start:
+	movlw	13
+	call	move_motor1
+	;call	ADC_Read
+	;call	LDR_compare_loop
+	;movf	best_high_word, A
+	;call	LCD_Write_Hex
+	goto loop
+
+loop:
+    goto    loop
+	
+    
+    
+start_LDR:
+	call	ADC_Read		; read in value of LDR from port RA0
+	movf	ADRESH, W, A		; read in high word
+	movwf	best_high_word, A
+	movf	ADRESL, W, A
+	movwf	best_low_word, A
+	
+LDR_compare_loop:
+	movf	ADRESH, W, A
+	cpfseq	best_high_word, A
+	call	low_word_comp
+	cpfslt	best_high_word, A
+	movwf	best_high_word, A
+	return
+	
+	
+low_word_comp:
+	call	ADC_Read
+	movf	ADRESL, W, A
+	cpfslt	best_low_word, A
+	movwf	best_low_word, A
+	return
+	
+	
+end
