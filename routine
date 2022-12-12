@@ -1,0 +1,204 @@
+#include <xc.inc>
+
+global  routine_Setup, routine_Read    
+    
+psect	routine_code, class=CODE
+
+	
+psect	udata_acs   ; reserve data space in access ram
+count1:		ds 1	; reserve 1 byte for counter 1
+count2:		ds 1	; reserve 1 byte for counter 2
+best_position1:	ds 1	; reserve 1 byte for best position of motor 1
+best_position2:	ds 1	; reserve 1 byte for best position of motor 2
+count_m1:	ds 1
+count_m2:	ds 1
+marker1:	ds 1
+marker2:	ds 1
+normal_count:	ds 1
+    
+psect	routine_code, class=CODE
+    
+initial_setup:
+	call	scan1		    ; do first rougth scan
+	call	move_to_best
+	call	position_check1
+	call	position_check2
+	call	special_scan21
+	call	special_scan22
+	call	scan2
+	
+	
+move_to_best:
+	movf	best_position1, A
+	movwf	pulse_length1, A
+	call	move_motor1	    ; move motor 1 back to the best position 
+	movf	best_position2, A
+	movwf	pulse_length2, A
+	call	move_motor2	    ; move motor 2 back to the best position 
+    
+	
+	
+scan_1:	    ;	initial scan that quickly scans the whole hemisphere
+	movlw	12	;move second motor to top position
+	movwf	pulse_length2, A
+	call	move_motor2	
+	movlw	4	;move first motor to initial position
+	movwf	pulse_length1, A
+	call	move_motor1
+	call	ADC_Read
+	call	LDR_compare	; take measurement of the top position
+	movlw	8		; move motor 2 to mid position
+	movwf	pulse_length2
+	call	move_motor2
+	
+	movlw	0x06		; create counter for motor 1 to go 360
+	movwf	count2
+	goto	another_loop
+    another_loop:
+	call	loop
+	call	move_motor1	; move motor 1 to the new position
+	call	ADC_Read	; read the value of the intensity of that position
+	call	LDR_compare
+	call	best_check	; check if the this position has a higher intensity and change the value of the best position
+	movlw	0x00
+	cpfseq	count2		; check if the loop is finished
+	goto	another_loop
+	return
+
+
+	
+   
+    
+loop:	;loop to make the step motor move by 4 steps
+	movlw	4
+	movwf	count1, A
+	goto	loop_2
+	    
+    loop_2:
+	decf	count1, A
+	incf	pulse_length1, A    ; increment pulse length of motor 1
+	movlw	0x00
+	cpfseq	count1	    ; check if the loop is finished
+	goto	loop_2
+	return
+
+	
+scan2:	
+	movlw	0x01	    ; check if the best positions is not at the edge
+	cpfseq	marker1
+	return
+	movlw	0x01
+	cpfseq	marker2
+	return
+	movlw	0x02
+	addwf	pulse_length1, 1
+	addwf	pulse_length2, 1
+	movlw	0x02
+	subwf	pulse_length1
+	subwf	pulse_length2
+	call	up_in_m2
+	movlw	0x02
+	subwf	pulse_length1
+	call	down_in_m2
+	movlw	0x02
+	addwf	pulse_length1
+	call	up_in_m2
+	return
+	
+    
+special_scan21:
+	movlw	0x01
+	cpfseq	marker1
+	return
+	movlw	0x02
+	addwf	pulse_length1, 1
+	call	up_in_m2
+	movlw	0x02
+	subwf	pulse_length1
+	call	down_in_m2
+	movlw	24
+	movwf	pulse_length1
+	call	up_in_m2
+	return
+	
+special_scan22:
+	movlw	0x01
+	cpfseq	marker2
+	return
+	movlw	0x02
+	addwf	pulse_length1, 1
+	call	up_in_m2
+	movlw	0x02
+	subwf	pulse_length1
+	call	down_in_m2
+	movlw	24
+	movwf	pulse_length1
+	call	up_in_m2
+	return
+	
+position_check1:    ;check if the best position is not 4
+	movlw   4
+	cpfseq  best_position1
+	return
+	movlw   0x01
+	movwf   marker2
+	return
+	
+position_check2:     ;check if the best position is not 26
+	movlw   26
+	cpfseq  best_position1
+	return
+	movlw   0x01
+	movwf   marker2
+	return
+
+up_in_m2:   ; routine to move motor 2 up 3 times and take measurements
+	call	move_motor1
+	movlw	0x03
+	movwf	count_m2
+	goto	yet_another_loop
+
+    yet_another_loop:
+	call	move_motor2
+	call	ADC_Read
+	call	LDR_compare_loop
+	movlw	0x02
+	addwf	pulse_length2, 1
+	decf	count_m2
+	movlw	0x00
+	cpfseq	count_m2
+	goto	yet_another_loop
+	return
+
+
+down_in_m2:	; routine to move motor 2 down 3 times and take measurements
+	call	move_motor1
+	movlw	0x03
+	movwf	count_m2
+	goto	yet_another_loop2
+
+    yet_another_loop2:
+	call	move_motor2
+	call	ADC_Read
+	call	LDR_compare_loop
+	call	best_check
+	movlw	0x02
+	subwf	pulse_length2, 1
+	decf	count_m2
+	movlw	0x00
+	cpfseq	count_m2
+	goto	yet_another_loop2
+	return
+    
+best_check: ; check if the best position has changed
+	movlw	0x00
+	cpfseq	test	    ; test is a marker in LDR_compare_loop 
+	call	change_best_position
+	return
+	
+change_best_position:	; if the best position has changed -> update the variables
+	movf	pulse_length1
+	movwf	best_position1	    ; make the current position the best position of motor 1
+	movf	pulse_length1
+	movwf	best_position1	    ; make the current position the best position of motor 1
+	
