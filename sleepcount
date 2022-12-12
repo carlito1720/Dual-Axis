@@ -1,0 +1,10 @@
+Sleep_Setup:
+     movlw   D'522'       ; number of WDT timeouts * 128 * 18mS
+     movwf   sleepcount
+     return
+  
+ SleepLoop:
+     sleep			; go to sleep until WDT wakeup (~2.3 seconds)
+     decfsz  sleepcount, f      ; decrement count, skip if 0
+     goto    SleepLoop		; goto sleep until count complete	
+     return
