@@ -12,8 +12,7 @@ motor_cnt_h:	ds 1	; reserve 1 byte for variable LCD_cnt_h
 motor_cnt_ms:	ds 1	; reserve 1 byte for ms counter
 motor_tmp:	ds 1	; reserve 1 byte for temporary use
 motor_counter:	ds 1	; reserve 1 byte for counting through nessage
-l:		ds 1
-p:		ds 1
+
 
 
 psect	motor_code, class=CODE

@@ -1,38 +1,23 @@
 #include <xc.inc>
 
-global	pulse_length1, pulse_length2, best_high_word, best_low_word, test, LDR_compare_loop,count2, yes
+global	pulse_length1, pulse_length2
     
 extrn	motor_Setup, move_motor1, move_motor2	    ; external motor subroutines
-extrn	LCD_Setup, LCD_Write_Message, LCD_Write_Hex ; external LCD subroutines
+extrn	LCD_Setup, LCD_Write_Message, LCD_Write_Hex, marker ; external LCD subroutines
 extrn	ADC_Setup, ADC_Read			    ; exernal anolog to digital conveter subroutines
-extrn	
+extrn	initial_setup, long_move1, long_move2,best_position1, best_position2, secondary_loop
+extrn	start_LDR, LDR_compare_loop, best_high_word, best_low_word
 
 psect	udata_acs   ; reserve data space in access ram
-counter:       ds 1 ; reserve one byte for a counter variable
 delay_count:   ds 1 ; reserve one byte for counter in the delay routine
-best_low_word: ds 1 ; reserve one byte for the best high word
-best_high_word:ds 1 ; reserve one byt for the byte low word
-high_word:     ds 1 ; reserve one byte for high word of LDR input
-low_word:      ds 1 ; reserve one byte for low word of LDR input
 pulse_length1: ds 1 ; reserve 1 byte for duty cycl of motor 1  
 pulse_length2: ds 1	; reserve 1 byte for duty cycle of motor 2    
-test:	       ds 1
-count1:		ds 1	; reserve 1 byte for counter 1
-count2:		ds 1	; reserve 1 byte for counter 2
-best_position1:	ds 1	; reserve 1 byte for best position of motor 1
-best_position2:	ds 1	; reserve 1 byte for best position of motor 2
-count_m1:	ds 1
-count_m2:	ds 1
-marker1:	ds 1
-marker2:	ds 1
-normal_count:	ds 1
 motor_cnt_l:	ds 1	; reserve 1 byte for variable LCD_cnt_l
 motor_cnt_h:	ds 1	; reserve 1 byte for variable LCD_cnt_h
 motor_cnt_ms:	ds 1	; reserve 1 byte for ms counter
 motor_tmp:	ds 1	; reserve 1 byte for temporary use
 motor_counter:	ds 1	; reserve 1 byte for counting through nessage   
-yes:		ds 1   
-no:		ds 1    
+sleepcount:	ds 1	; reserve 1 byte for sleep counter
     
 psect	code, abs
 	
@@ -50,11 +35,12 @@ setup:
 	movwf	best_high_word, A
 	movwf	pulse_length1, A
 	movwf	pulse_length2, A
-	movlw	0x18
+	movlw	0x0B
+	
 	movwf	pulse_length2, A
 	call	long_move2
 	
-	movlw	0x0C
+	movlw	0x04
 	movwf	pulse_length1, A
 	call	long_move1
 
@@ -63,8 +49,21 @@ setup:
 	
 ; ******* Main programme ****************************************
 start:
+	movlw	0x04
+	
+	movwf	pulse_length2, A
+	call	long_move2
 	call	ADC_Read
-	;call	initial_setup
+	call	initial_setup
+	goto	lets_go_boys
+    lets_go_boys:
+	call	sleep_setup
+	call	ADC_Read
+	call	LDR_compare_loop
+	movwf	0x00
+	cpfseq	marker
+	call	secondary_loop
+	goto	lets_go_boys
 	return
 	
 
@@ -128,4 +127,17 @@ move_to_best:
 	movwf	pulse_length2, A
 	call	move_motor2	    ; move motor 2 back to the best position 
 
+sleep_setup:
+	movlw	0x05		; number of WDT timeouts 18ms
+	movwf	sleepcount
+	goto	sleeploop
+	
+sleeploop:
+	sleep			; go to sleep until WDT wakeup (~2.3 seconds)
+	decf	sleepcount	; decrement count, skip if 0
+	movlw	0x00
+	cpfseq	sleepcount
+	goto	sleeploop	; goto sleep unitl count complete
+	return
+	
 	end	 rst

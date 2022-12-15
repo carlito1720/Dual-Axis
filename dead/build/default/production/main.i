@@ -10958,39 +10958,24 @@ ENDM
 # 5 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\xc.inc" 2 3
 # 2 "main.s" 2
 
-global pulse_length1, pulse_length2, best_high_word, best_low_word, test, LDR_compare_loop,count2, yes
+global pulse_length1, pulse_length2
 
 extrn motor_Setup, move_motor1, move_motor2 ; external motor subroutines
-extrn LCD_Setup, LCD_Write_Message, LCD_Write_Hex ; external LCD subroutines
+extrn LCD_Setup, LCD_Write_Message, LCD_Write_Hex, marker ; external LCD subroutines
 extrn ADC_Setup, ADC_Read ; exernal anolog to digital conveter subroutines
-
+extrn initial_setup, long_move1, long_move2,best_position1, best_position2, secondary_loop
+extrn start_LDR, LDR_compare_loop, best_high_word, best_low_word
 
 psect udata_acs ; reserve data space in access ram
-counter: ds 1 ; reserve one byte for a counter variable
 delay_count: ds 1 ; reserve one byte for counter in the delay routine
-best_low_word: ds 1 ; reserve one byte for the best high word
-best_high_word:ds 1 ; reserve one byt for the byte low word
-high_word: ds 1 ; reserve one byte for high word of LDR input
-low_word: ds 1 ; reserve one byte for low word of LDR input
 pulse_length1: ds 1 ; reserve 1 byte for duty cycl of motor 1
 pulse_length2: ds 1 ; reserve 1 byte for duty cycle of motor 2
-test: ds 1
-count1: ds 1 ; reserve 1 byte for counter 1
-count2: ds 1 ; reserve 1 byte for counter 2
-best_position1: ds 1 ; reserve 1 byte for best position of motor 1
-best_position2: ds 1 ; reserve 1 byte for best position of motor 2
-count_m1: ds 1
-count_m2: ds 1
-marker1: ds 1
-marker2: ds 1
-normal_count: ds 1
 motor_cnt_l: ds 1 ; reserve 1 byte for variable LCD_cnt_l
 motor_cnt_h: ds 1 ; reserve 1 byte for variable LCD_cnt_h
 motor_cnt_ms: ds 1 ; reserve 1 byte for ms counter
 motor_tmp: ds 1 ; reserve 1 byte for temporary use
 motor_counter: ds 1 ; reserve 1 byte for counting through nessage
-yes: ds 1
-no: ds 1
+sleepcount: ds 1 ; reserve 1 byte for sleep counter
 
 psect code, abs
 
@@ -11008,11 +10993,12 @@ setup:
  movwf best_high_word, A
  movwf pulse_length1, A
  movwf pulse_length2, A
- movlw 0x18
+ movlw 0x0B
+
  movwf pulse_length2, A
  call long_move2
 
- movlw 0x0C
+ movlw 0x04
  movwf pulse_length1, A
  call long_move1
 
@@ -11021,121 +11007,24 @@ setup:
 
 ; ******* Main programme ****************************************
 start:
- call ADC_Read
- ;call initial_setup
- return
+ movlw 0x04
 
-long_move1:
-     movlw 0xFF
- movwf yes
- goto loopy1
-    loopy1:
- call move_motor1
- decf no
- movlw 0x00
- cpfseq no
- goto loopy1
- movlw 0xFF
- movwf no
- goto loopy3
-    loopy3:
- call move_motor1
- decf no
- movlw 0x00
- cpfseq no
- goto loopy3
- return
-
-
-long_move2:
-     movlw 0xFF
- movwf yes
- goto loopy
-    loopy:
- call move_motor2
- decf yes
- movlw 0x00
- cpfseq yes
- goto loopy
- movlw 0xFF
- movwf yes
- goto loopy2
-    loopy2:
- call move_motor2
- decf yes
- movlw 0x00
- cpfseq yes
- goto loopy2
- return
-
-
-start_LDR: ; read in value of LDR from port ((PORTA) and 0FFh), 0, a
- movf ADRESH, W, A ; read in high word
- movwf best_high_word, A
- movf ADRESL, W, A
- movwf best_low_word, A
- return
-
-LDR_compare_loop:
- movlw 0x00
- movwf test, A
- movf ADRESH, W, A
- cpfseq best_high_word, A
- call comp
- movlw 0x01
- cpfseq test, A
- call low_word_comp
- return
-
-
-comp:
- movlw 0x01
- movwf test, A
- movf ADRESH, W, A
- cpfslt best_high_word, A
- return
- movwf best_high_word, A
- movf ADRESL, W, A
- movwf best_low_word, A
-
- return
-
-high_word_comp:
- movwf best_high_word, A
- movf ADRESL, W, A
- movwf best_low_word, A
-
- return
-low_word_comp:
- movf ADRESL, W, A
- nop
- nop
- cpfsgt best_low_word, A
- movwf best_low_word, A
- return
-
-
-
-
-initial_setup:
-
-
- call ADC_Read
- call LDR_compare_loop ; take measurement of the top position
-
- movlw 0x06 ; move motor 2 to mid position
  movwf pulse_length2, A
  call long_move2
-
- call scan1
-
- call move_to_best
- ;call position_check1
- ;call position_check2
- ;call special_scan21
- ;call special_scan22
- ;call scan2
+ call ADC_Read
+ call initial_setup
+ goto lets_go_boys
+    lets_go_boys:
+ call sleep_setup
+ call ADC_Read
+ call LDR_compare_loop
+ movwf 0x00
+ cpfseq marker
+ call secondary_loop
+ goto lets_go_boys
  return
+
+
 
 long_asss_delay:
  movlw 0xFF
@@ -11156,163 +11045,9 @@ long_asss_delay:
  call motor_delay_ms
  return
 
-scan1: ; initial scan that quickly scans the whole hemisphere
-
- movlw 0x06 ; create counter for motor 1 to go 360
- movwf count2, A
- goto another_loop
-    another_loop:
- decf count2
- call loop
- call long_move1 ; move motor 1 to the new position
-
- call ADC_Read ; read the value of the intensity of that position
- call LDR_compare_loop
- call best_check ; check if the this position has a higher intensity and change the value of the best position
- movlw 0x00
- cpfseq count2, A ; check if the loop is finished
- goto another_loop
- return
 
 
 
-
-
-loop: ;loop to make the step motor move by 4 steps
- movlw 0x04
- movwf count1, A
- goto loop_2
-
-    loop_2:
- decf count1, A
- incf pulse_length1, A ; increment pulse length of motor 1
- movlw 0x00
- cpfseq count1, A ; check if the loop is finished
- goto loop_2
- return
-
-
-scan2:
- movlw 0x01 ; check if the best positions is not at the edge
- cpfseq marker1, A
- return
- movlw 0x01
- cpfseq marker2, A
- return
- movlw 0x02
- addwf pulse_length1, 1
- addwf pulse_length2, 1
- movlw 0x02
- subwf pulse_length1,1
- subwf pulse_length2 , 1
- call up_in_m2
- movlw 0x02
- subwf pulse_length1, 1
- call down_in_m2
- movlw 0x02
- addwf pulse_length1, 1
- call up_in_m2
- return
-
-
-special_scan21:
- movlw 0x01
- cpfseq marker1, A
- return
- movlw 0x02
- addwf pulse_length1, 1
- call up_in_m2
- movlw 0x02
- subwf pulse_length1, A
- call down_in_m2
- movlw 24
- movwf pulse_length1 ,A
- call up_in_m2
- return
-
-special_scan22:
- movlw 0x01
- cpfseq marker2, A
- return
- movlw 0x02
- addwf pulse_length1, 1
- call up_in_m2
- movlw 0x02
- subwf pulse_length1, A
- call down_in_m2
- movlw 24
- movwf pulse_length1 , A
- call up_in_m2
- return
-
-position_check1: ;check if the best position is not 4
- movlw 4
- cpfseq best_position1, A
- return
- movlw 0x01
- movwf marker2, A
- return
-
-position_check2: ;check if the best position is not 26
- movlw 26
- cpfseq best_position1, A
- return
- movlw 0x01
- movwf marker2, A
- return
-
-up_in_m2: ; routine to move motor 2 up 3 times and take measurements
- call move_motor1
- movlw 0x03
- movwf count_m2, A
- goto yet_another_loop
-
-    yet_another_loop:
- call move_motor2
- call ADC_Setup
- call ADC_Read
- call LDR_compare_loop
- movlw 0x02
- addwf pulse_length2, 1
- decf count_m2, A
- movlw 0x00
- cpfseq count_m2, A
- goto yet_another_loop
- return
-
-
-down_in_m2: ; routine to move motor 2 down 3 times and take measurements
- call move_motor1
- movlw 0x03
- movwf count_m2, A
- goto yet_another_loop2
-
-    yet_another_loop2:
- call move_motor2
- call ADC_Setup
- call ADC_Read
- call LDR_compare_loop
- call best_check
- movlw 0x02
- subwf pulse_length2, 1
- decf count_m2, A
- movlw 0x00
- cpfseq count_m2, A
- goto yet_another_loop2
- return
-
-best_check: ; check if the best position has changed
- movlw 0x00
- cpfseq test, A ; test is a marker in LDR_compare_loop
- call change_best_position
- return
-
-change_best_position: ; if the best position has changed -> update the variables
- movf pulse_length1, A
- movwf best_position1, A ; make the current position the best position of motor 1
- movf pulse_length1, A
- movwf best_position1, A ; make the current position the best position of motor 1
- return
 
 motor_delay_ms: ; delay given in ms in W
  movwf motor_cnt_ms, A
@@ -11349,5 +11084,18 @@ move_to_best:
  movf best_position2, A
  movwf pulse_length2, A
  call move_motor2 ; move motor 2 back to the best position
+
+sleep_setup:
+ movlw 0x05 ; number of WDT timeouts 18ms
+ movwf sleepcount
+ goto sleeploop
+
+sleeploop:
+ sleep ; go to sleep until WDT wakeup (~2.3 seconds)
+ decf sleepcount ; decrement count, skip if 0
+ movlw 0x00
+ cpfseq sleepcount
+ goto sleeploop ; goto sleep unitl count complete
+ return
 
  end rst
