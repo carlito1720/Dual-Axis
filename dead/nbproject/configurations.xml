@@ -19,6 +19,7 @@
       <itemPath>motor_control.s</itemPath>
       <itemPath>routine.s</itemPath>
       <itemPath>LDR.s</itemPath>
+      <itemPath>hextodec.s</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

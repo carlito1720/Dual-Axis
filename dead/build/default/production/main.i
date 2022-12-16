@@ -10961,10 +10961,11 @@ ENDM
 global pulse_length1, pulse_length2
 
 extrn motor_Setup, move_motor1, move_motor2 ; external motor subroutines
-extrn LCD_Setup, LCD_Write_Message, LCD_Write_Hex, marker ; external LCD subroutines
+extrn LCD_Setup, LCD_Write_Message, LCD_Write_Hex, marker, LCD_clear ; external LCD subroutines
 extrn ADC_Setup, ADC_Read ; exernal anolog to digital conveter subroutines
 extrn initial_setup, long_move1, long_move2,best_position1, best_position2, secondary_loop
 extrn start_LDR, LDR_compare_loop, best_high_word, best_low_word
+extrn hextodec, sol
 
 psect udata_acs ; reserve data space in access ram
 delay_count: ds 1 ; reserve one byte for counter in the delay routine
@@ -11007,14 +11008,14 @@ setup:
 
 ; ******* Main programme ****************************************
 start:
- movlw 0x04
-
- movwf pulse_length2, A
- call long_move2
  call ADC_Read
  call initial_setup
  goto lets_go_boys
     lets_go_boys:
+ call LCD_clear
+ call hextodec
+ movf sol,W,A
+ call LCD_Write_Hex
  call sleep_setup
  call ADC_Read
  call LDR_compare_loop

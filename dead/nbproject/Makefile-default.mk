@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.s config.s ADC.s LCD.s motor_control.s routine.s LDR.s
+SOURCEFILES_QUOTED_IF_SPACED=main.s config.s ADC.s LCD.s motor_control.s routine.s LDR.s hextodec.s
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/config.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/LCD.o ${OBJECTDIR}/motor_control.o ${OBJECTDIR}/routine.o ${OBJECTDIR}/LDR.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/config.o.d ${OBJECTDIR}/ADC.o.d ${OBJECTDIR}/LCD.o.d ${OBJECTDIR}/motor_control.o.d ${OBJECTDIR}/routine.o.d ${OBJECTDIR}/LDR.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/config.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/LCD.o ${OBJECTDIR}/motor_control.o ${OBJECTDIR}/routine.o ${OBJECTDIR}/LDR.o ${OBJECTDIR}/hextodec.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/config.o.d ${OBJECTDIR}/ADC.o.d ${OBJECTDIR}/LCD.o.d ${OBJECTDIR}/motor_control.o.d ${OBJECTDIR}/routine.o.d ${OBJECTDIR}/LDR.o.d ${OBJECTDIR}/hextodec.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/config.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/LCD.o ${OBJECTDIR}/motor_control.o ${OBJECTDIR}/routine.o ${OBJECTDIR}/LDR.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/config.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/LCD.o ${OBJECTDIR}/motor_control.o ${OBJECTDIR}/routine.o ${OBJECTDIR}/LDR.o ${OBJECTDIR}/hextodec.o
 
 # Source Files
-SOURCEFILES=main.s config.s ADC.s LCD.s motor_control.s routine.s LDR.s
+SOURCEFILES=main.s config.s ADC.s LCD.s motor_control.s routine.s LDR.s hextodec.s
 
 
 
@@ -150,6 +150,14 @@ ${OBJECTDIR}/LDR.o: LDR.s  nbproject/Makefile-${CND_CONF}.mk
 	LDR.s \
 	 -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
 	
+${OBJECTDIR}/hextodec.o: hextodec.s  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/hextodec.o 
+	${MP_AS} -mcpu=PIC18F87K22 -c \
+	-o ${OBJECTDIR}/hextodec.o \
+	hextodec.s \
+	 -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
+	
 else
 ${OBJECTDIR}/main.o: main.s  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
@@ -205,6 +213,14 @@ ${OBJECTDIR}/LDR.o: LDR.s  nbproject/Makefile-${CND_CONF}.mk
 	${MP_AS} -mcpu=PIC18F87K22 -c \
 	-o ${OBJECTDIR}/LDR.o \
 	LDR.s \
+	 -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
+	
+${OBJECTDIR}/hextodec.o: hextodec.s  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/hextodec.o 
+	${MP_AS} -mcpu=PIC18F87K22 -c \
+	-o ${OBJECTDIR}/hextodec.o \
+	hextodec.s \
 	 -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
 	
 endif

@@ -11,9 +11,12 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$build/default/production/hextodec.o
+routine_code CODE 0 1FBA8 1FBA8 F0 1
+udata_acs COMRAM 1 10 10 E 1
 $build/default/production/main.o
-code CODE 0 0 0 E0 1
-udata_acs COMRAM 1 10 10 9 1
+code CODE 0 0 0 E6 1
+udata_acs COMRAM 1 1E 1E 9 1
 config CONFIG 4 300000 300000 E 1
 $build/default/production/routine.o
 routine_code CODE 0 1FDB6 1FDB6 24A 1
@@ -21,17 +24,17 @@ udata_acs COMRAM 1 0 0 10 1
 $build/default/production/config.o
 config CONFIG 4 300000 300000 E 1
 $build/default/production/ADC.o
-adc_code CODE 0 1FBCE 1FBCE 1E 1
+adc_code CODE 0 1FAD0 1FAD0 1E 1
 $build/default/production/LCD.o
-udata_acs_ovr COMRAM 1 27 27 1 1
-udata_acs COMRAM 1 1E 1E 5 1
-lcd_code CODE 0 1FCA6 1FCA6 110 1
+udata_acs_ovr COMRAM 1 35 35 1 1
+udata_acs COMRAM 1 2C 2C 5 1
+lcd_code CODE 0 1FC98 1FC98 11E 1
 $build/default/production/LDR.o
-routine_code CODE 0 1FBEC 1FBEC 54 1
-udata_acs COMRAM 1 23 23 4 1
+routine_code CODE 0 1FAEE 1FAEE 54 1
+udata_acs COMRAM 1 31 31 4 1
 $build/default/production/motor_control.o
-udata_acs COMRAM 1 19 19 5 1
-motor_code CODE 0 1FC40 1FC40 66 1
+udata_acs COMRAM 1 27 27 5 1
+motor_code CODE 0 1FB42 1FB42 66 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -50,21 +53,21 @@ BANK6 600-6FF 1
 BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
-CONST E0-1FBCD 1
+CONST E6-1FACF 1
 IDLOC 200000-200007 1
-SMALLCONST 1000-1FBCD 1
-CODE E0-1FBCD 1
+SMALLCONST 1000-1FACF 1
+CODE E6-1FACF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DFF 1
 BANK14 E00-EFF 1
 BANK15 F00-F15 1
-BIGRAM E0-F15 1
-COMRAM 28-5F 1
+BIGRAM E6-F15 1
+COMRAM 36-5F 1
 EEDATA F00000-F003FF 1
 MEDIUMCONST 1000-FFFF 1
-MEDIUMCONST 11000-1FBCD 1
+MEDIUMCONST 11000-1FACF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -78,90 +81,200 @@ MEDIUMCONST 11000-1FBCD 1
 # are in ascending order of addresses.
 # All other numeric values are in decimal.
 %LINETAB
+$build/default/production/hextodec.o
+1FBA8 routine_code CODE >26:H:\Desktop\dead\hextodec.s
+1FBAA routine_code CODE >27:H:\Desktop\dead\hextodec.s
+1FBAC routine_code CODE >28:H:\Desktop\dead\hextodec.s
+1FBAE routine_code CODE >29:H:\Desktop\dead\hextodec.s
+1FBB0 routine_code CODE >30:H:\Desktop\dead\hextodec.s
+1FBB2 routine_code CODE >31:H:\Desktop\dead\hextodec.s
+1FBB4 routine_code CODE >32:H:\Desktop\dead\hextodec.s
+1FBB8 routine_code CODE >33:H:\Desktop\dead\hextodec.s
+1FBBC routine_code CODE >34:H:\Desktop\dead\hextodec.s
+1FBC0 routine_code CODE >37:H:\Desktop\dead\hextodec.s
+1FBC2 routine_code CODE >39:H:\Desktop\dead\hextodec.s
+1FBC4 routine_code CODE >40:H:\Desktop\dead\hextodec.s
+1FBC6 routine_code CODE >41:H:\Desktop\dead\hextodec.s
+1FBC8 routine_code CODE >42:H:\Desktop\dead\hextodec.s
+1FBCA routine_code CODE >43:H:\Desktop\dead\hextodec.s
+1FBCC routine_code CODE >44:H:\Desktop\dead\hextodec.s
+1FBCE routine_code CODE >45:H:\Desktop\dead\hextodec.s
+1FBD0 routine_code CODE >46:H:\Desktop\dead\hextodec.s
+1FBD2 routine_code CODE >47:H:\Desktop\dead\hextodec.s
+1FBD4 routine_code CODE >48:H:\Desktop\dead\hextodec.s
+1FBD6 routine_code CODE >49:H:\Desktop\dead\hextodec.s
+1FBD8 routine_code CODE >50:H:\Desktop\dead\hextodec.s
+1FBDA routine_code CODE >51:H:\Desktop\dead\hextodec.s
+1FBDE routine_code CODE >53:H:\Desktop\dead\hextodec.s
+1FBE0 routine_code CODE >55:H:\Desktop\dead\hextodec.s
+1FBE2 routine_code CODE >56:H:\Desktop\dead\hextodec.s
+1FBE4 routine_code CODE >57:H:\Desktop\dead\hextodec.s
+1FBE6 routine_code CODE >58:H:\Desktop\dead\hextodec.s
+1FBE8 routine_code CODE >59:H:\Desktop\dead\hextodec.s
+1FBEA routine_code CODE >60:H:\Desktop\dead\hextodec.s
+1FBEC routine_code CODE >61:H:\Desktop\dead\hextodec.s
+1FBEE routine_code CODE >62:H:\Desktop\dead\hextodec.s
+1FBF0 routine_code CODE >63:H:\Desktop\dead\hextodec.s
+1FBF2 routine_code CODE >64:H:\Desktop\dead\hextodec.s
+1FBF4 routine_code CODE >65:H:\Desktop\dead\hextodec.s
+1FBF6 routine_code CODE >66:H:\Desktop\dead\hextodec.s
+1FBF8 routine_code CODE >67:H:\Desktop\dead\hextodec.s
+1FBFC routine_code CODE >69:H:\Desktop\dead\hextodec.s
+1FBFE routine_code CODE >71:H:\Desktop\dead\hextodec.s
+1FC00 routine_code CODE >72:H:\Desktop\dead\hextodec.s
+1FC02 routine_code CODE >73:H:\Desktop\dead\hextodec.s
+1FC04 routine_code CODE >74:H:\Desktop\dead\hextodec.s
+1FC06 routine_code CODE >75:H:\Desktop\dead\hextodec.s
+1FC08 routine_code CODE >76:H:\Desktop\dead\hextodec.s
+1FC0A routine_code CODE >77:H:\Desktop\dead\hextodec.s
+1FC0C routine_code CODE >78:H:\Desktop\dead\hextodec.s
+1FC0E routine_code CODE >79:H:\Desktop\dead\hextodec.s
+1FC10 routine_code CODE >80:H:\Desktop\dead\hextodec.s
+1FC12 routine_code CODE >81:H:\Desktop\dead\hextodec.s
+1FC14 routine_code CODE >82:H:\Desktop\dead\hextodec.s
+1FC16 routine_code CODE >83:H:\Desktop\dead\hextodec.s
+1FC1A routine_code CODE >86:H:\Desktop\dead\hextodec.s
+1FC1C routine_code CODE >87:H:\Desktop\dead\hextodec.s
+1FC1E routine_code CODE >90:H:\Desktop\dead\hextodec.s
+1FC20 routine_code CODE >91:H:\Desktop\dead\hextodec.s
+1FC22 routine_code CODE >92:H:\Desktop\dead\hextodec.s
+1FC24 routine_code CODE >93:H:\Desktop\dead\hextodec.s
+1FC26 routine_code CODE >94:H:\Desktop\dead\hextodec.s
+1FC28 routine_code CODE >95:H:\Desktop\dead\hextodec.s
+1FC2A routine_code CODE >96:H:\Desktop\dead\hextodec.s
+1FC2C routine_code CODE >97:H:\Desktop\dead\hextodec.s
+1FC2E routine_code CODE >98:H:\Desktop\dead\hextodec.s
+1FC30 routine_code CODE >103:H:\Desktop\dead\hextodec.s
+1FC32 routine_code CODE >104:H:\Desktop\dead\hextodec.s
+1FC34 routine_code CODE >106:H:\Desktop\dead\hextodec.s
+1FC38 routine_code CODE >107:H:\Desktop\dead\hextodec.s
+1FC3C routine_code CODE >109:H:\Desktop\dead\hextodec.s
+1FC3E routine_code CODE >110:H:\Desktop\dead\hextodec.s
+1FC40 routine_code CODE >112:H:\Desktop\dead\hextodec.s
+1FC44 routine_code CODE >113:H:\Desktop\dead\hextodec.s
+1FC48 routine_code CODE >115:H:\Desktop\dead\hextodec.s
+1FC4A routine_code CODE >116:H:\Desktop\dead\hextodec.s
+1FC4C routine_code CODE >118:H:\Desktop\dead\hextodec.s
+1FC4E routine_code CODE >119:H:\Desktop\dead\hextodec.s
+1FC50 routine_code CODE >120:H:\Desktop\dead\hextodec.s
+1FC52 routine_code CODE >121:H:\Desktop\dead\hextodec.s
+1FC54 routine_code CODE >122:H:\Desktop\dead\hextodec.s
+1FC56 routine_code CODE >123:H:\Desktop\dead\hextodec.s
+1FC58 routine_code CODE >125:H:\Desktop\dead\hextodec.s
+1FC5A routine_code CODE >126:H:\Desktop\dead\hextodec.s
+1FC5C routine_code CODE >128:H:\Desktop\dead\hextodec.s
+1FC5E routine_code CODE >129:H:\Desktop\dead\hextodec.s
+1FC60 routine_code CODE >130:H:\Desktop\dead\hextodec.s
+1FC62 routine_code CODE >131:H:\Desktop\dead\hextodec.s
+1FC64 routine_code CODE >132:H:\Desktop\dead\hextodec.s
+1FC66 routine_code CODE >133:H:\Desktop\dead\hextodec.s
+1FC68 routine_code CODE >134:H:\Desktop\dead\hextodec.s
+1FC6A routine_code CODE >139:H:\Desktop\dead\hextodec.s
+1FC6C routine_code CODE >140:H:\Desktop\dead\hextodec.s
+1FC6E routine_code CODE >142:H:\Desktop\dead\hextodec.s
+1FC72 routine_code CODE >143:H:\Desktop\dead\hextodec.s
+1FC76 routine_code CODE >145:H:\Desktop\dead\hextodec.s
+1FC78 routine_code CODE >146:H:\Desktop\dead\hextodec.s
+1FC7A routine_code CODE >148:H:\Desktop\dead\hextodec.s
+1FC7C routine_code CODE >149:H:\Desktop\dead\hextodec.s
+1FC7E routine_code CODE >150:H:\Desktop\dead\hextodec.s
+1FC80 routine_code CODE >151:H:\Desktop\dead\hextodec.s
+1FC82 routine_code CODE >152:H:\Desktop\dead\hextodec.s
+1FC84 routine_code CODE >153:H:\Desktop\dead\hextodec.s
+1FC86 routine_code CODE >155:H:\Desktop\dead\hextodec.s
+1FC88 routine_code CODE >156:H:\Desktop\dead\hextodec.s
+1FC8A routine_code CODE >158:H:\Desktop\dead\hextodec.s
+1FC8C routine_code CODE >159:H:\Desktop\dead\hextodec.s
+1FC8E routine_code CODE >160:H:\Desktop\dead\hextodec.s
+1FC90 routine_code CODE >161:H:\Desktop\dead\hextodec.s
+1FC92 routine_code CODE >162:H:\Desktop\dead\hextodec.s
+1FC94 routine_code CODE >163:H:\Desktop\dead\hextodec.s
+1FC96 routine_code CODE >164:H:\Desktop\dead\hextodec.s
 $build/default/production/main.o
-0 code CODE >25:H:\Desktop\dead\main.s
 0 code CODE >26:H:\Desktop\dead\main.s
-4 code CODE >30:H:\Desktop\dead\main.s
-8 code CODE >31:H:\Desktop\dead\main.s
-C code CODE >32:H:\Desktop\dead\main.s
-10 code CODE >33:H:\Desktop\dead\main.s
-12 code CODE >34:H:\Desktop\dead\main.s
-14 code CODE >35:H:\Desktop\dead\main.s
-16 code CODE >36:H:\Desktop\dead\main.s
-18 code CODE >37:H:\Desktop\dead\main.s
-1A code CODE >38:H:\Desktop\dead\main.s
-1C code CODE >40:H:\Desktop\dead\main.s
-1E code CODE >41:H:\Desktop\dead\main.s
-22 code CODE >43:H:\Desktop\dead\main.s
-24 code CODE >44:H:\Desktop\dead\main.s
-26 code CODE >45:H:\Desktop\dead\main.s
-2A code CODE >47:H:\Desktop\dead\main.s
-2E code CODE >52:H:\Desktop\dead\main.s
-30 code CODE >54:H:\Desktop\dead\main.s
-32 code CODE >55:H:\Desktop\dead\main.s
-36 code CODE >56:H:\Desktop\dead\main.s
+0 code CODE >27:H:\Desktop\dead\main.s
+4 code CODE >31:H:\Desktop\dead\main.s
+8 code CODE >32:H:\Desktop\dead\main.s
+C code CODE >33:H:\Desktop\dead\main.s
+10 code CODE >34:H:\Desktop\dead\main.s
+12 code CODE >35:H:\Desktop\dead\main.s
+14 code CODE >36:H:\Desktop\dead\main.s
+16 code CODE >37:H:\Desktop\dead\main.s
+18 code CODE >38:H:\Desktop\dead\main.s
+1A code CODE >39:H:\Desktop\dead\main.s
+1C code CODE >41:H:\Desktop\dead\main.s
+1E code CODE >42:H:\Desktop\dead\main.s
+22 code CODE >44:H:\Desktop\dead\main.s
+24 code CODE >45:H:\Desktop\dead\main.s
+26 code CODE >46:H:\Desktop\dead\main.s
+2A code CODE >48:H:\Desktop\dead\main.s
+2E code CODE >53:H:\Desktop\dead\main.s
+32 code CODE >54:H:\Desktop\dead\main.s
+36 code CODE >55:H:\Desktop\dead\main.s
 3A code CODE >57:H:\Desktop\dead\main.s
 3E code CODE >58:H:\Desktop\dead\main.s
-42 code CODE >60:H:\Desktop\dead\main.s
-46 code CODE >61:H:\Desktop\dead\main.s
-4A code CODE >62:H:\Desktop\dead\main.s
-4E code CODE >63:H:\Desktop\dead\main.s
-50 code CODE >64:H:\Desktop\dead\main.s
-52 code CODE >65:H:\Desktop\dead\main.s
-56 code CODE >66:H:\Desktop\dead\main.s
-5A code CODE >67:H:\Desktop\dead\main.s
-5C code CODE >72:H:\Desktop\dead\main.s
-5E code CODE >73:H:\Desktop\dead\main.s
-62 code CODE >74:H:\Desktop\dead\main.s
-64 code CODE >75:H:\Desktop\dead\main.s
-68 code CODE >76:H:\Desktop\dead\main.s
-6A code CODE >77:H:\Desktop\dead\main.s
-6E code CODE >78:H:\Desktop\dead\main.s
-70 code CODE >79:H:\Desktop\dead\main.s
-74 code CODE >80:H:\Desktop\dead\main.s
-76 code CODE >81:H:\Desktop\dead\main.s
-7A code CODE >82:H:\Desktop\dead\main.s
-7C code CODE >83:H:\Desktop\dead\main.s
-80 code CODE >84:H:\Desktop\dead\main.s
-82 code CODE >85:H:\Desktop\dead\main.s
-86 code CODE >86:H:\Desktop\dead\main.s
-88 code CODE >87:H:\Desktop\dead\main.s
-8C code CODE >88:H:\Desktop\dead\main.s
-8E code CODE >95:H:\Desktop\dead\main.s
-90 code CODE >97:H:\Desktop\dead\main.s
-92 code CODE >98:H:\Desktop\dead\main.s
-96 code CODE >99:H:\Desktop\dead\main.s
-98 code CODE >100:H:\Desktop\dead\main.s
-9A code CODE >101:H:\Desktop\dead\main.s
-9C code CODE >104:H:\Desktop\dead\main.s
-9E code CODE >105:H:\Desktop\dead\main.s
-A0 code CODE >106:H:\Desktop\dead\main.s
-A2 code CODE >107:H:\Desktop\dead\main.s
-A4 code CODE >108:H:\Desktop\dead\main.s
-A6 code CODE >109:H:\Desktop\dead\main.s
-A8 code CODE >110:H:\Desktop\dead\main.s
-AA code CODE >111:H:\Desktop\dead\main.s
-AE code CODE >112:H:\Desktop\dead\main.s
-B0 code CODE >115:H:\Desktop\dead\main.s
-B2 code CODE >116:H:\Desktop\dead\main.s
-B4 code CODE >117:H:\Desktop\dead\main.s
-B6 code CODE >118:H:\Desktop\dead\main.s
-B8 code CODE >119:H:\Desktop\dead\main.s
-BA code CODE >123:H:\Desktop\dead\main.s
-BC code CODE >124:H:\Desktop\dead\main.s
-BE code CODE >125:H:\Desktop\dead\main.s
-C2 code CODE >126:H:\Desktop\dead\main.s
-C4 code CODE >127:H:\Desktop\dead\main.s
-C6 code CODE >128:H:\Desktop\dead\main.s
-CA code CODE >131:H:\Desktop\dead\main.s
-CC code CODE >132:H:\Desktop\dead\main.s
-CE code CODE >133:H:\Desktop\dead\main.s
-D2 code CODE >136:H:\Desktop\dead\main.s
-D4 code CODE >137:H:\Desktop\dead\main.s
-D6 code CODE >138:H:\Desktop\dead\main.s
-D8 code CODE >139:H:\Desktop\dead\main.s
-DA code CODE >140:H:\Desktop\dead\main.s
-DE code CODE >141:H:\Desktop\dead\main.s
+42 code CODE >59:H:\Desktop\dead\main.s
+44 code CODE >60:H:\Desktop\dead\main.s
+48 code CODE >61:H:\Desktop\dead\main.s
+4C code CODE >62:H:\Desktop\dead\main.s
+50 code CODE >63:H:\Desktop\dead\main.s
+54 code CODE >64:H:\Desktop\dead\main.s
+56 code CODE >65:H:\Desktop\dead\main.s
+58 code CODE >66:H:\Desktop\dead\main.s
+5C code CODE >67:H:\Desktop\dead\main.s
+60 code CODE >68:H:\Desktop\dead\main.s
+62 code CODE >73:H:\Desktop\dead\main.s
+64 code CODE >74:H:\Desktop\dead\main.s
+68 code CODE >75:H:\Desktop\dead\main.s
+6A code CODE >76:H:\Desktop\dead\main.s
+6E code CODE >77:H:\Desktop\dead\main.s
+70 code CODE >78:H:\Desktop\dead\main.s
+74 code CODE >79:H:\Desktop\dead\main.s
+76 code CODE >80:H:\Desktop\dead\main.s
+7A code CODE >81:H:\Desktop\dead\main.s
+7C code CODE >82:H:\Desktop\dead\main.s
+80 code CODE >83:H:\Desktop\dead\main.s
+82 code CODE >84:H:\Desktop\dead\main.s
+86 code CODE >85:H:\Desktop\dead\main.s
+88 code CODE >86:H:\Desktop\dead\main.s
+8C code CODE >87:H:\Desktop\dead\main.s
+8E code CODE >88:H:\Desktop\dead\main.s
+92 code CODE >89:H:\Desktop\dead\main.s
+94 code CODE >96:H:\Desktop\dead\main.s
+96 code CODE >98:H:\Desktop\dead\main.s
+98 code CODE >99:H:\Desktop\dead\main.s
+9C code CODE >100:H:\Desktop\dead\main.s
+9E code CODE >101:H:\Desktop\dead\main.s
+A0 code CODE >102:H:\Desktop\dead\main.s
+A2 code CODE >105:H:\Desktop\dead\main.s
+A4 code CODE >106:H:\Desktop\dead\main.s
+A6 code CODE >107:H:\Desktop\dead\main.s
+A8 code CODE >108:H:\Desktop\dead\main.s
+AA code CODE >109:H:\Desktop\dead\main.s
+AC code CODE >110:H:\Desktop\dead\main.s
+AE code CODE >111:H:\Desktop\dead\main.s
+B0 code CODE >112:H:\Desktop\dead\main.s
+B4 code CODE >113:H:\Desktop\dead\main.s
+B6 code CODE >116:H:\Desktop\dead\main.s
+B8 code CODE >117:H:\Desktop\dead\main.s
+BA code CODE >118:H:\Desktop\dead\main.s
+BC code CODE >119:H:\Desktop\dead\main.s
+BE code CODE >120:H:\Desktop\dead\main.s
+C0 code CODE >124:H:\Desktop\dead\main.s
+C2 code CODE >125:H:\Desktop\dead\main.s
+C4 code CODE >126:H:\Desktop\dead\main.s
+C8 code CODE >127:H:\Desktop\dead\main.s
+CA code CODE >128:H:\Desktop\dead\main.s
+CC code CODE >129:H:\Desktop\dead\main.s
+D0 code CODE >132:H:\Desktop\dead\main.s
+D2 code CODE >133:H:\Desktop\dead\main.s
+D4 code CODE >134:H:\Desktop\dead\main.s
+D8 code CODE >137:H:\Desktop\dead\main.s
+DA code CODE >138:H:\Desktop\dead\main.s
+DC code CODE >139:H:\Desktop\dead\main.s
+DE code CODE >140:H:\Desktop\dead\main.s
+E0 code CODE >141:H:\Desktop\dead\main.s
+E4 code CODE >142:H:\Desktop\dead\main.s
 $build/default/production/routine.o
 1FDB6 routine_code CODE >31:H:\Desktop\dead\routine.s
 1FDB8 routine_code CODE >32:H:\Desktop\dead\routine.s
@@ -380,221 +493,226 @@ $build/default/production/routine.o
 1FFFC routine_code CODE >304:H:\Desktop\dead\routine.s
 1FFFE routine_code CODE >305:H:\Desktop\dead\routine.s
 $build/default/production/ADC.o
-1FBCE adc_code CODE >8:H:\Desktop\dead\ADC.s
-1FBD0 adc_code CODE >9:H:\Desktop\dead\ADC.s
-1FBD2 adc_code CODE >10:H:\Desktop\dead\ADC.s
-1FBD4 adc_code CODE >11:H:\Desktop\dead\ADC.s
-1FBD6 adc_code CODE >12:H:\Desktop\dead\ADC.s
-1FBD8 adc_code CODE >13:H:\Desktop\dead\ADC.s
-1FBDA adc_code CODE >14:H:\Desktop\dead\ADC.s
-1FBDC adc_code CODE >15:H:\Desktop\dead\ADC.s
-1FBDE adc_code CODE >16:H:\Desktop\dead\ADC.s
-1FBE0 adc_code CODE >17:H:\Desktop\dead\ADC.s
-1FBE2 adc_code CODE >18:H:\Desktop\dead\ADC.s
-1FBE4 adc_code CODE >21:H:\Desktop\dead\ADC.s
-1FBE6 adc_code CODE >23:H:\Desktop\dead\ADC.s
-1FBE8 adc_code CODE >24:H:\Desktop\dead\ADC.s
-1FBEA adc_code CODE >25:H:\Desktop\dead\ADC.s
+1FAD0 adc_code CODE >8:H:\Desktop\dead\ADC.s
+1FAD2 adc_code CODE >9:H:\Desktop\dead\ADC.s
+1FAD4 adc_code CODE >10:H:\Desktop\dead\ADC.s
+1FAD6 adc_code CODE >11:H:\Desktop\dead\ADC.s
+1FAD8 adc_code CODE >12:H:\Desktop\dead\ADC.s
+1FADA adc_code CODE >13:H:\Desktop\dead\ADC.s
+1FADC adc_code CODE >14:H:\Desktop\dead\ADC.s
+1FADE adc_code CODE >15:H:\Desktop\dead\ADC.s
+1FAE0 adc_code CODE >16:H:\Desktop\dead\ADC.s
+1FAE2 adc_code CODE >17:H:\Desktop\dead\ADC.s
+1FAE4 adc_code CODE >18:H:\Desktop\dead\ADC.s
+1FAE6 adc_code CODE >21:H:\Desktop\dead\ADC.s
+1FAE8 adc_code CODE >23:H:\Desktop\dead\ADC.s
+1FAEA adc_code CODE >24:H:\Desktop\dead\ADC.s
+1FAEC adc_code CODE >25:H:\Desktop\dead\ADC.s
 $build/default/production/LCD.o
-1FCA6 lcd_code CODE >21:H:\Desktop\dead\LCD.s
-1FCA8 lcd_code CODE >22:H:\Desktop\dead\LCD.s
-1FCAA lcd_code CODE >23:H:\Desktop\dead\LCD.s
-1FCAC lcd_code CODE >24:H:\Desktop\dead\LCD.s
-1FCAE lcd_code CODE >25:H:\Desktop\dead\LCD.s
-1FCB2 lcd_code CODE >26:H:\Desktop\dead\LCD.s
-1FCB4 lcd_code CODE >27:H:\Desktop\dead\LCD.s
-1FCB8 lcd_code CODE >28:H:\Desktop\dead\LCD.s
-1FCBA lcd_code CODE >29:H:\Desktop\dead\LCD.s
-1FCBE lcd_code CODE >30:H:\Desktop\dead\LCD.s
-1FCC0 lcd_code CODE >31:H:\Desktop\dead\LCD.s
-1FCC4 lcd_code CODE >32:H:\Desktop\dead\LCD.s
-1FCC6 lcd_code CODE >33:H:\Desktop\dead\LCD.s
-1FCCA lcd_code CODE >34:H:\Desktop\dead\LCD.s
-1FCCC lcd_code CODE >35:H:\Desktop\dead\LCD.s
-1FCD0 lcd_code CODE >36:H:\Desktop\dead\LCD.s
-1FCD2 lcd_code CODE >37:H:\Desktop\dead\LCD.s
-1FCD6 lcd_code CODE >38:H:\Desktop\dead\LCD.s
-1FCD8 lcd_code CODE >39:H:\Desktop\dead\LCD.s
-1FCDC lcd_code CODE >40:H:\Desktop\dead\LCD.s
-1FCDE lcd_code CODE >41:H:\Desktop\dead\LCD.s
-1FCE2 lcd_code CODE >42:H:\Desktop\dead\LCD.s
-1FCE4 lcd_code CODE >43:H:\Desktop\dead\LCD.s
-1FCE8 lcd_code CODE >44:H:\Desktop\dead\LCD.s
-1FCEA lcd_code CODE >45:H:\Desktop\dead\LCD.s
-1FCEE lcd_code CODE >46:H:\Desktop\dead\LCD.s
-1FCF0 lcd_code CODE >47:H:\Desktop\dead\LCD.s
-1FCF4 lcd_code CODE >48:H:\Desktop\dead\LCD.s
-1FCF6 lcd_code CODE >49:H:\Desktop\dead\LCD.s
-1FCFA lcd_code CODE >50:H:\Desktop\dead\LCD.s
-1FCFC lcd_code CODE >53:H:\Desktop\dead\LCD.s
-1FCFE lcd_code CODE >54:H:\Desktop\dead\LCD.s
-1FD00 lcd_code CODE >55:H:\Desktop\dead\LCD.s
-1FD04 lcd_code CODE >56:H:\Desktop\dead\LCD.s
-1FD06 lcd_code CODE >58:H:\Desktop\dead\LCD.s
-1FD08 lcd_code CODE >59:H:\Desktop\dead\LCD.s
-1FD0A lcd_code CODE >60:H:\Desktop\dead\LCD.s
-1FD0C lcd_code CODE >61:H:\Desktop\dead\LCD.s
-1FD0E lcd_code CODE >62:H:\Desktop\dead\LCD.s
-1FD10 lcd_code CODE >63:H:\Desktop\dead\LCD.s
-1FD12 lcd_code CODE >64:H:\Desktop\dead\LCD.s
-1FD14 lcd_code CODE >65:H:\Desktop\dead\LCD.s
-1FD18 lcd_code CODE >66:H:\Desktop\dead\LCD.s
-1FD1A lcd_code CODE >69:H:\Desktop\dead\LCD.s
-1FD1C lcd_code CODE >71:H:\Desktop\dead\LCD.s
-1FD1E lcd_code CODE >72:H:\Desktop\dead\LCD.s
-1FD22 lcd_code CODE >73:H:\Desktop\dead\LCD.s
-1FD24 lcd_code CODE >74:H:\Desktop\dead\LCD.s
-1FD26 lcd_code CODE >75:H:\Desktop\dead\LCD.s
-1FD28 lcd_code CODE >78:H:\Desktop\dead\LCD.s
-1FD2A lcd_code CODE >79:H:\Desktop\dead\LCD.s
-1FD2C lcd_code CODE >80:H:\Desktop\dead\LCD.s
-1FD2E lcd_code CODE >81:H:\Desktop\dead\LCD.s
-1FD30 lcd_code CODE >82:H:\Desktop\dead\LCD.s
-1FD32 lcd_code CODE >83:H:\Desktop\dead\LCD.s
-1FD36 lcd_code CODE >84:H:\Desktop\dead\LCD.s
-1FD38 lcd_code CODE >85:H:\Desktop\dead\LCD.s
-1FD3A lcd_code CODE >86:H:\Desktop\dead\LCD.s
-1FD3C lcd_code CODE >87:H:\Desktop\dead\LCD.s
-1FD3E lcd_code CODE >88:H:\Desktop\dead\LCD.s
-1FD42 lcd_code CODE >89:H:\Desktop\dead\LCD.s
-1FD44 lcd_code CODE >92:H:\Desktop\dead\LCD.s
-1FD46 lcd_code CODE >93:H:\Desktop\dead\LCD.s
-1FD48 lcd_code CODE >94:H:\Desktop\dead\LCD.s
-1FD4A lcd_code CODE >95:H:\Desktop\dead\LCD.s
-1FD4C lcd_code CODE >96:H:\Desktop\dead\LCD.s
-1FD4E lcd_code CODE >97:H:\Desktop\dead\LCD.s
-1FD52 lcd_code CODE >98:H:\Desktop\dead\LCD.s
-1FD54 lcd_code CODE >99:H:\Desktop\dead\LCD.s
-1FD56 lcd_code CODE >100:H:\Desktop\dead\LCD.s
-1FD58 lcd_code CODE >101:H:\Desktop\dead\LCD.s
-1FD5A lcd_code CODE >102:H:\Desktop\dead\LCD.s
-1FD5E lcd_code CODE >103:H:\Desktop\dead\LCD.s
-1FD60 lcd_code CODE >104:H:\Desktop\dead\LCD.s
-1FD64 lcd_code CODE >105:H:\Desktop\dead\LCD.s
-1FD66 lcd_code CODE >108:H:\Desktop\dead\LCD.s
-1FD68 lcd_code CODE >109:H:\Desktop\dead\LCD.s
-1FD6A lcd_code CODE >110:H:\Desktop\dead\LCD.s
-1FD6C lcd_code CODE >111:H:\Desktop\dead\LCD.s
-1FD6E lcd_code CODE >112:H:\Desktop\dead\LCD.s
-1FD70 lcd_code CODE >113:H:\Desktop\dead\LCD.s
-1FD72 lcd_code CODE >114:H:\Desktop\dead\LCD.s
-1FD74 lcd_code CODE >115:H:\Desktop\dead\LCD.s
-1FD76 lcd_code CODE >116:H:\Desktop\dead\LCD.s
-1FD78 lcd_code CODE >117:H:\Desktop\dead\LCD.s
-1FD7A lcd_code CODE >118:H:\Desktop\dead\LCD.s
-1FD7C lcd_code CODE >119:H:\Desktop\dead\LCD.s
-1FD7E lcd_code CODE >120:H:\Desktop\dead\LCD.s
-1FD80 lcd_code CODE >121:H:\Desktop\dead\LCD.s
-1FD82 lcd_code CODE >122:H:\Desktop\dead\LCD.s
-1FD84 lcd_code CODE >123:H:\Desktop\dead\LCD.s
-1FD86 lcd_code CODE >124:H:\Desktop\dead\LCD.s
-1FD88 lcd_code CODE >125:H:\Desktop\dead\LCD.s
-1FD8A lcd_code CODE >129:H:\Desktop\dead\LCD.s
-1FD8C lcd_code CODE >130:H:\Desktop\dead\LCD.s
-1FD8E lcd_code CODE >131:H:\Desktop\dead\LCD.s
-1FD92 lcd_code CODE >132:H:\Desktop\dead\LCD.s
-1FD94 lcd_code CODE >133:H:\Desktop\dead\LCD.s
-1FD96 lcd_code CODE >134:H:\Desktop\dead\LCD.s
-1FD98 lcd_code CODE >137:H:\Desktop\dead\LCD.s
-1FD9A lcd_code CODE >138:H:\Desktop\dead\LCD.s
-1FD9C lcd_code CODE >139:H:\Desktop\dead\LCD.s
-1FD9E lcd_code CODE >140:H:\Desktop\dead\LCD.s
-1FDA0 lcd_code CODE >141:H:\Desktop\dead\LCD.s
-1FDA2 lcd_code CODE >142:H:\Desktop\dead\LCD.s
-1FDA4 lcd_code CODE >143:H:\Desktop\dead\LCD.s
-1FDA6 lcd_code CODE >144:H:\Desktop\dead\LCD.s
-1FDAA lcd_code CODE >145:H:\Desktop\dead\LCD.s
-1FDAC lcd_code CODE >148:H:\Desktop\dead\LCD.s
-1FDAE lcd_code CODE >149:H:\Desktop\dead\LCD.s
-1FDB0 lcd_code CODE >150:H:\Desktop\dead\LCD.s
-1FDB2 lcd_code CODE >151:H:\Desktop\dead\LCD.s
-1FDB4 lcd_code CODE >152:H:\Desktop\dead\LCD.s
+1FC98 lcd_code CODE >21:H:\Desktop\dead\LCD.s
+1FC9A lcd_code CODE >22:H:\Desktop\dead\LCD.s
+1FC9C lcd_code CODE >23:H:\Desktop\dead\LCD.s
+1FC9E lcd_code CODE >24:H:\Desktop\dead\LCD.s
+1FCA0 lcd_code CODE >25:H:\Desktop\dead\LCD.s
+1FCA4 lcd_code CODE >26:H:\Desktop\dead\LCD.s
+1FCA6 lcd_code CODE >27:H:\Desktop\dead\LCD.s
+1FCAA lcd_code CODE >28:H:\Desktop\dead\LCD.s
+1FCAC lcd_code CODE >29:H:\Desktop\dead\LCD.s
+1FCB0 lcd_code CODE >30:H:\Desktop\dead\LCD.s
+1FCB2 lcd_code CODE >31:H:\Desktop\dead\LCD.s
+1FCB6 lcd_code CODE >32:H:\Desktop\dead\LCD.s
+1FCB8 lcd_code CODE >33:H:\Desktop\dead\LCD.s
+1FCBC lcd_code CODE >34:H:\Desktop\dead\LCD.s
+1FCBE lcd_code CODE >35:H:\Desktop\dead\LCD.s
+1FCC2 lcd_code CODE >36:H:\Desktop\dead\LCD.s
+1FCC4 lcd_code CODE >37:H:\Desktop\dead\LCD.s
+1FCC8 lcd_code CODE >38:H:\Desktop\dead\LCD.s
+1FCCA lcd_code CODE >39:H:\Desktop\dead\LCD.s
+1FCCE lcd_code CODE >40:H:\Desktop\dead\LCD.s
+1FCD0 lcd_code CODE >41:H:\Desktop\dead\LCD.s
+1FCD4 lcd_code CODE >42:H:\Desktop\dead\LCD.s
+1FCD6 lcd_code CODE >43:H:\Desktop\dead\LCD.s
+1FCDA lcd_code CODE >44:H:\Desktop\dead\LCD.s
+1FCDC lcd_code CODE >45:H:\Desktop\dead\LCD.s
+1FCE0 lcd_code CODE >46:H:\Desktop\dead\LCD.s
+1FCE2 lcd_code CODE >47:H:\Desktop\dead\LCD.s
+1FCE6 lcd_code CODE >48:H:\Desktop\dead\LCD.s
+1FCE8 lcd_code CODE >49:H:\Desktop\dead\LCD.s
+1FCEC lcd_code CODE >50:H:\Desktop\dead\LCD.s
+1FCEE lcd_code CODE >53:H:\Desktop\dead\LCD.s
+1FCF0 lcd_code CODE >54:H:\Desktop\dead\LCD.s
+1FCF2 lcd_code CODE >55:H:\Desktop\dead\LCD.s
+1FCF6 lcd_code CODE >56:H:\Desktop\dead\LCD.s
+1FCF8 lcd_code CODE >58:H:\Desktop\dead\LCD.s
+1FCFA lcd_code CODE >59:H:\Desktop\dead\LCD.s
+1FCFC lcd_code CODE >60:H:\Desktop\dead\LCD.s
+1FCFE lcd_code CODE >61:H:\Desktop\dead\LCD.s
+1FD00 lcd_code CODE >62:H:\Desktop\dead\LCD.s
+1FD02 lcd_code CODE >63:H:\Desktop\dead\LCD.s
+1FD04 lcd_code CODE >64:H:\Desktop\dead\LCD.s
+1FD06 lcd_code CODE >65:H:\Desktop\dead\LCD.s
+1FD0A lcd_code CODE >66:H:\Desktop\dead\LCD.s
+1FD0C lcd_code CODE >69:H:\Desktop\dead\LCD.s
+1FD0E lcd_code CODE >71:H:\Desktop\dead\LCD.s
+1FD10 lcd_code CODE >72:H:\Desktop\dead\LCD.s
+1FD14 lcd_code CODE >73:H:\Desktop\dead\LCD.s
+1FD16 lcd_code CODE >74:H:\Desktop\dead\LCD.s
+1FD18 lcd_code CODE >75:H:\Desktop\dead\LCD.s
+1FD1A lcd_code CODE >78:H:\Desktop\dead\LCD.s
+1FD1C lcd_code CODE >79:H:\Desktop\dead\LCD.s
+1FD1E lcd_code CODE >80:H:\Desktop\dead\LCD.s
+1FD20 lcd_code CODE >81:H:\Desktop\dead\LCD.s
+1FD22 lcd_code CODE >82:H:\Desktop\dead\LCD.s
+1FD24 lcd_code CODE >83:H:\Desktop\dead\LCD.s
+1FD28 lcd_code CODE >84:H:\Desktop\dead\LCD.s
+1FD2A lcd_code CODE >85:H:\Desktop\dead\LCD.s
+1FD2C lcd_code CODE >86:H:\Desktop\dead\LCD.s
+1FD2E lcd_code CODE >87:H:\Desktop\dead\LCD.s
+1FD30 lcd_code CODE >88:H:\Desktop\dead\LCD.s
+1FD34 lcd_code CODE >89:H:\Desktop\dead\LCD.s
+1FD36 lcd_code CODE >92:H:\Desktop\dead\LCD.s
+1FD38 lcd_code CODE >93:H:\Desktop\dead\LCD.s
+1FD3A lcd_code CODE >94:H:\Desktop\dead\LCD.s
+1FD3C lcd_code CODE >95:H:\Desktop\dead\LCD.s
+1FD3E lcd_code CODE >96:H:\Desktop\dead\LCD.s
+1FD40 lcd_code CODE >97:H:\Desktop\dead\LCD.s
+1FD44 lcd_code CODE >98:H:\Desktop\dead\LCD.s
+1FD46 lcd_code CODE >99:H:\Desktop\dead\LCD.s
+1FD48 lcd_code CODE >100:H:\Desktop\dead\LCD.s
+1FD4A lcd_code CODE >101:H:\Desktop\dead\LCD.s
+1FD4C lcd_code CODE >102:H:\Desktop\dead\LCD.s
+1FD50 lcd_code CODE >103:H:\Desktop\dead\LCD.s
+1FD52 lcd_code CODE >104:H:\Desktop\dead\LCD.s
+1FD56 lcd_code CODE >105:H:\Desktop\dead\LCD.s
+1FD58 lcd_code CODE >109:H:\Desktop\dead\LCD.s
+1FD5A lcd_code CODE >110:H:\Desktop\dead\LCD.s
+1FD5E lcd_code CODE >111:H:\Desktop\dead\LCD.s
+1FD60 lcd_code CODE >112:H:\Desktop\dead\LCD.s
+1FD64 lcd_code CODE >113:H:\Desktop\dead\LCD.s
+1FD66 lcd_code CODE >116:H:\Desktop\dead\LCD.s
+1FD68 lcd_code CODE >117:H:\Desktop\dead\LCD.s
+1FD6A lcd_code CODE >118:H:\Desktop\dead\LCD.s
+1FD6C lcd_code CODE >119:H:\Desktop\dead\LCD.s
+1FD6E lcd_code CODE >120:H:\Desktop\dead\LCD.s
+1FD70 lcd_code CODE >121:H:\Desktop\dead\LCD.s
+1FD72 lcd_code CODE >122:H:\Desktop\dead\LCD.s
+1FD74 lcd_code CODE >123:H:\Desktop\dead\LCD.s
+1FD76 lcd_code CODE >124:H:\Desktop\dead\LCD.s
+1FD78 lcd_code CODE >125:H:\Desktop\dead\LCD.s
+1FD7A lcd_code CODE >126:H:\Desktop\dead\LCD.s
+1FD7C lcd_code CODE >127:H:\Desktop\dead\LCD.s
+1FD7E lcd_code CODE >128:H:\Desktop\dead\LCD.s
+1FD80 lcd_code CODE >129:H:\Desktop\dead\LCD.s
+1FD82 lcd_code CODE >130:H:\Desktop\dead\LCD.s
+1FD84 lcd_code CODE >131:H:\Desktop\dead\LCD.s
+1FD86 lcd_code CODE >132:H:\Desktop\dead\LCD.s
+1FD88 lcd_code CODE >133:H:\Desktop\dead\LCD.s
+1FD8A lcd_code CODE >137:H:\Desktop\dead\LCD.s
+1FD8C lcd_code CODE >138:H:\Desktop\dead\LCD.s
+1FD8E lcd_code CODE >139:H:\Desktop\dead\LCD.s
+1FD92 lcd_code CODE >140:H:\Desktop\dead\LCD.s
+1FD94 lcd_code CODE >141:H:\Desktop\dead\LCD.s
+1FD96 lcd_code CODE >142:H:\Desktop\dead\LCD.s
+1FD98 lcd_code CODE >145:H:\Desktop\dead\LCD.s
+1FD9A lcd_code CODE >146:H:\Desktop\dead\LCD.s
+1FD9C lcd_code CODE >147:H:\Desktop\dead\LCD.s
+1FD9E lcd_code CODE >148:H:\Desktop\dead\LCD.s
+1FDA0 lcd_code CODE >149:H:\Desktop\dead\LCD.s
+1FDA2 lcd_code CODE >150:H:\Desktop\dead\LCD.s
+1FDA4 lcd_code CODE >151:H:\Desktop\dead\LCD.s
+1FDA6 lcd_code CODE >152:H:\Desktop\dead\LCD.s
+1FDAA lcd_code CODE >153:H:\Desktop\dead\LCD.s
+1FDAC lcd_code CODE >156:H:\Desktop\dead\LCD.s
+1FDAE lcd_code CODE >157:H:\Desktop\dead\LCD.s
+1FDB0 lcd_code CODE >158:H:\Desktop\dead\LCD.s
+1FDB2 lcd_code CODE >159:H:\Desktop\dead\LCD.s
+1FDB4 lcd_code CODE >160:H:\Desktop\dead\LCD.s
 $build/default/production/LDR.o
-1FBEC routine_code CODE >16:H:\Desktop\dead\LDR.s
-1FBEE routine_code CODE >17:H:\Desktop\dead\LDR.s
-1FBF0 routine_code CODE >18:H:\Desktop\dead\LDR.s
-1FBF2 routine_code CODE >19:H:\Desktop\dead\LDR.s
-1FBF4 routine_code CODE >20:H:\Desktop\dead\LDR.s
-1FBF6 routine_code CODE >23:H:\Desktop\dead\LDR.s
-1FBF8 routine_code CODE >24:H:\Desktop\dead\LDR.s
-1FBFA routine_code CODE >25:H:\Desktop\dead\LDR.s
-1FBFC routine_code CODE >26:H:\Desktop\dead\LDR.s
-1FBFE routine_code CODE >27:H:\Desktop\dead\LDR.s
-1FC00 routine_code CODE >28:H:\Desktop\dead\LDR.s
-1FC04 routine_code CODE >29:H:\Desktop\dead\LDR.s
-1FC06 routine_code CODE >30:H:\Desktop\dead\LDR.s
-1FC08 routine_code CODE >31:H:\Desktop\dead\LDR.s
-1FC0C routine_code CODE >32:H:\Desktop\dead\LDR.s
-1FC0E routine_code CODE >37:H:\Desktop\dead\LDR.s
-1FC10 routine_code CODE >38:H:\Desktop\dead\LDR.s
-1FC12 routine_code CODE >39:H:\Desktop\dead\LDR.s
-1FC14 routine_code CODE >40:H:\Desktop\dead\LDR.s
-1FC16 routine_code CODE >41:H:\Desktop\dead\LDR.s
-1FC18 routine_code CODE >42:H:\Desktop\dead\LDR.s
-1FC1A routine_code CODE >43:H:\Desktop\dead\LDR.s
-1FC1C routine_code CODE >44:H:\Desktop\dead\LDR.s
-1FC1E routine_code CODE >45:H:\Desktop\dead\LDR.s
-1FC20 routine_code CODE >46:H:\Desktop\dead\LDR.s
-1FC22 routine_code CODE >49:H:\Desktop\dead\LDR.s
-1FC24 routine_code CODE >50:H:\Desktop\dead\LDR.s
-1FC26 routine_code CODE >51:H:\Desktop\dead\LDR.s
-1FC28 routine_code CODE >53:H:\Desktop\dead\LDR.s
-1FC2A routine_code CODE >55:H:\Desktop\dead\LDR.s
-1FC2C routine_code CODE >56:H:\Desktop\dead\LDR.s
-1FC2E routine_code CODE >57:H:\Desktop\dead\LDR.s
-1FC30 routine_code CODE >58:H:\Desktop\dead\LDR.s
-1FC32 routine_code CODE >59:H:\Desktop\dead\LDR.s
-1FC36 routine_code CODE >60:H:\Desktop\dead\LDR.s
-1FC38 routine_code CODE >63:H:\Desktop\dead\LDR.s
-1FC3A routine_code CODE >64:H:\Desktop\dead\LDR.s
-1FC3C routine_code CODE >65:H:\Desktop\dead\LDR.s
-1FC3E routine_code CODE >66:H:\Desktop\dead\LDR.s
+1FAEE routine_code CODE >16:H:\Desktop\dead\LDR.s
+1FAF0 routine_code CODE >17:H:\Desktop\dead\LDR.s
+1FAF2 routine_code CODE >18:H:\Desktop\dead\LDR.s
+1FAF4 routine_code CODE >19:H:\Desktop\dead\LDR.s
+1FAF6 routine_code CODE >20:H:\Desktop\dead\LDR.s
+1FAF8 routine_code CODE >23:H:\Desktop\dead\LDR.s
+1FAFA routine_code CODE >24:H:\Desktop\dead\LDR.s
+1FAFC routine_code CODE >25:H:\Desktop\dead\LDR.s
+1FAFE routine_code CODE >26:H:\Desktop\dead\LDR.s
+1FB00 routine_code CODE >27:H:\Desktop\dead\LDR.s
+1FB02 routine_code CODE >28:H:\Desktop\dead\LDR.s
+1FB06 routine_code CODE >29:H:\Desktop\dead\LDR.s
+1FB08 routine_code CODE >30:H:\Desktop\dead\LDR.s
+1FB0A routine_code CODE >31:H:\Desktop\dead\LDR.s
+1FB0E routine_code CODE >32:H:\Desktop\dead\LDR.s
+1FB10 routine_code CODE >37:H:\Desktop\dead\LDR.s
+1FB12 routine_code CODE >38:H:\Desktop\dead\LDR.s
+1FB14 routine_code CODE >39:H:\Desktop\dead\LDR.s
+1FB16 routine_code CODE >40:H:\Desktop\dead\LDR.s
+1FB18 routine_code CODE >41:H:\Desktop\dead\LDR.s
+1FB1A routine_code CODE >42:H:\Desktop\dead\LDR.s
+1FB1C routine_code CODE >43:H:\Desktop\dead\LDR.s
+1FB1E routine_code CODE >44:H:\Desktop\dead\LDR.s
+1FB20 routine_code CODE >45:H:\Desktop\dead\LDR.s
+1FB22 routine_code CODE >46:H:\Desktop\dead\LDR.s
+1FB24 routine_code CODE >49:H:\Desktop\dead\LDR.s
+1FB26 routine_code CODE >50:H:\Desktop\dead\LDR.s
+1FB28 routine_code CODE >51:H:\Desktop\dead\LDR.s
+1FB2A routine_code CODE >53:H:\Desktop\dead\LDR.s
+1FB2C routine_code CODE >55:H:\Desktop\dead\LDR.s
+1FB2E routine_code CODE >56:H:\Desktop\dead\LDR.s
+1FB30 routine_code CODE >57:H:\Desktop\dead\LDR.s
+1FB32 routine_code CODE >58:H:\Desktop\dead\LDR.s
+1FB34 routine_code CODE >59:H:\Desktop\dead\LDR.s
+1FB38 routine_code CODE >60:H:\Desktop\dead\LDR.s
+1FB3A routine_code CODE >63:H:\Desktop\dead\LDR.s
+1FB3C routine_code CODE >64:H:\Desktop\dead\LDR.s
+1FB3E routine_code CODE >65:H:\Desktop\dead\LDR.s
+1FB40 routine_code CODE >66:H:\Desktop\dead\LDR.s
 $build/default/production/motor_control.o
-1FC40 motor_code CODE >22:H:\Desktop\dead\motor_control.s
-1FC42 motor_code CODE >23:H:\Desktop\dead\motor_control.s
-1FC44 motor_code CODE >24:H:\Desktop\dead\motor_control.s
-1FC46 motor_code CODE >25:H:\Desktop\dead\motor_control.s
-1FC48 motor_code CODE >26:H:\Desktop\dead\motor_control.s
-1FC4A motor_code CODE >27:H:\Desktop\dead\motor_control.s
-1FC4C motor_code CODE >28:H:\Desktop\dead\motor_control.s
-1FC4E motor_code CODE >32:H:\Desktop\dead\motor_control.s
-1FC50 motor_code CODE >33:H:\Desktop\dead\motor_control.s
-1FC52 motor_code CODE >34:H:\Desktop\dead\motor_control.s
-1FC54 motor_code CODE >35:H:\Desktop\dead\motor_control.s
-1FC58 motor_code CODE >36:H:\Desktop\dead\motor_control.s
-1FC5A motor_code CODE >37:H:\Desktop\dead\motor_control.s
-1FC5C motor_code CODE >38:H:\Desktop\dead\motor_control.s
-1FC5E motor_code CODE >39:H:\Desktop\dead\motor_control.s
-1FC62 motor_code CODE >40:H:\Desktop\dead\motor_control.s
-1FC64 motor_code CODE >45:H:\Desktop\dead\motor_control.s
-1FC66 motor_code CODE >46:H:\Desktop\dead\motor_control.s
-1FC68 motor_code CODE >47:H:\Desktop\dead\motor_control.s
-1FC6A motor_code CODE >48:H:\Desktop\dead\motor_control.s
-1FC6E motor_code CODE >49:H:\Desktop\dead\motor_control.s
-1FC70 motor_code CODE >50:H:\Desktop\dead\motor_control.s
-1FC72 motor_code CODE >51:H:\Desktop\dead\motor_control.s
-1FC74 motor_code CODE >52:H:\Desktop\dead\motor_control.s
-1FC78 motor_code CODE >54:H:\Desktop\dead\motor_control.s
-1FC7A motor_code CODE >61:H:\Desktop\dead\motor_control.s
-1FC7C motor_code CODE >63:H:\Desktop\dead\motor_control.s
-1FC7E motor_code CODE >64:H:\Desktop\dead\motor_control.s
-1FC82 motor_code CODE >65:H:\Desktop\dead\motor_control.s
-1FC84 motor_code CODE >66:H:\Desktop\dead\motor_control.s
-1FC86 motor_code CODE >67:H:\Desktop\dead\motor_control.s
-1FC88 motor_code CODE >70:H:\Desktop\dead\motor_control.s
-1FC8A motor_code CODE >71:H:\Desktop\dead\motor_control.s
-1FC8C motor_code CODE >72:H:\Desktop\dead\motor_control.s
-1FC8E motor_code CODE >73:H:\Desktop\dead\motor_control.s
-1FC90 motor_code CODE >74:H:\Desktop\dead\motor_control.s
-1FC92 motor_code CODE >75:H:\Desktop\dead\motor_control.s
-1FC94 motor_code CODE >76:H:\Desktop\dead\motor_control.s
-1FC96 motor_code CODE >77:H:\Desktop\dead\motor_control.s
-1FC9A motor_code CODE >78:H:\Desktop\dead\motor_control.s
-1FC9C motor_code CODE >81:H:\Desktop\dead\motor_control.s
-1FC9E motor_code CODE >82:H:\Desktop\dead\motor_control.s
-1FCA0 motor_code CODE >83:H:\Desktop\dead\motor_control.s
-1FCA2 motor_code CODE >84:H:\Desktop\dead\motor_control.s
-1FCA4 motor_code CODE >85:H:\Desktop\dead\motor_control.s
+1FB42 motor_code CODE >22:H:\Desktop\dead\motor_control.s
+1FB44 motor_code CODE >23:H:\Desktop\dead\motor_control.s
+1FB46 motor_code CODE >24:H:\Desktop\dead\motor_control.s
+1FB48 motor_code CODE >25:H:\Desktop\dead\motor_control.s
+1FB4A motor_code CODE >26:H:\Desktop\dead\motor_control.s
+1FB4C motor_code CODE >27:H:\Desktop\dead\motor_control.s
+1FB4E motor_code CODE >28:H:\Desktop\dead\motor_control.s
+1FB50 motor_code CODE >32:H:\Desktop\dead\motor_control.s
+1FB52 motor_code CODE >33:H:\Desktop\dead\motor_control.s
+1FB54 motor_code CODE >34:H:\Desktop\dead\motor_control.s
+1FB56 motor_code CODE >35:H:\Desktop\dead\motor_control.s
+1FB5A motor_code CODE >36:H:\Desktop\dead\motor_control.s
+1FB5C motor_code CODE >37:H:\Desktop\dead\motor_control.s
+1FB5E motor_code CODE >38:H:\Desktop\dead\motor_control.s
+1FB60 motor_code CODE >39:H:\Desktop\dead\motor_control.s
+1FB64 motor_code CODE >40:H:\Desktop\dead\motor_control.s
+1FB66 motor_code CODE >45:H:\Desktop\dead\motor_control.s
+1FB68 motor_code CODE >46:H:\Desktop\dead\motor_control.s
+1FB6A motor_code CODE >47:H:\Desktop\dead\motor_control.s
+1FB6C motor_code CODE >48:H:\Desktop\dead\motor_control.s
+1FB70 motor_code CODE >49:H:\Desktop\dead\motor_control.s
+1FB72 motor_code CODE >50:H:\Desktop\dead\motor_control.s
+1FB74 motor_code CODE >51:H:\Desktop\dead\motor_control.s
+1FB76 motor_code CODE >52:H:\Desktop\dead\motor_control.s
+1FB7A motor_code CODE >54:H:\Desktop\dead\motor_control.s
+1FB7C motor_code CODE >61:H:\Desktop\dead\motor_control.s
+1FB7E motor_code CODE >63:H:\Desktop\dead\motor_control.s
+1FB80 motor_code CODE >64:H:\Desktop\dead\motor_control.s
+1FB84 motor_code CODE >65:H:\Desktop\dead\motor_control.s
+1FB86 motor_code CODE >66:H:\Desktop\dead\motor_control.s
+1FB88 motor_code CODE >67:H:\Desktop\dead\motor_control.s
+1FB8A motor_code CODE >70:H:\Desktop\dead\motor_control.s
+1FB8C motor_code CODE >71:H:\Desktop\dead\motor_control.s
+1FB8E motor_code CODE >72:H:\Desktop\dead\motor_control.s
+1FB90 motor_code CODE >73:H:\Desktop\dead\motor_control.s
+1FB92 motor_code CODE >74:H:\Desktop\dead\motor_control.s
+1FB94 motor_code CODE >75:H:\Desktop\dead\motor_control.s
+1FB96 motor_code CODE >76:H:\Desktop\dead\motor_control.s
+1FB98 motor_code CODE >77:H:\Desktop\dead\motor_control.s
+1FB9C motor_code CODE >78:H:\Desktop\dead\motor_control.s
+1FB9E motor_code CODE >81:H:\Desktop\dead\motor_control.s
+1FBA0 motor_code CODE >82:H:\Desktop\dead\motor_control.s
+1FBA2 motor_code CODE >83:H:\Desktop\dead\motor_control.s
+1FBA4 motor_code CODE >84:H:\Desktop\dead\motor_control.s
+1FBA6 motor_code CODE >85:H:\Desktop\dead\motor_control.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -609,7 +727,7 @@ $build/default/production/motor_control.o
 %SYMTAB
 __Ladc_code 0 0 ABS 0 adc_code -
 __Hspace_0 20000 0 ABS 0 - -
-__Hspace_1 28 0 ABS 0 - -
+__Hspace_1 36 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 60000E 0 ABS 0 - -
 __Hudata_bank0 0 0 ABS 0 udata_bank0 -
@@ -622,15 +740,20 @@ __Hudata_bank6 0 0 ABS 0 udata_bank6 -
 __Hudata_bank7 0 0 ABS 0 udata_bank7 -
 __Hudata_bank8 0 0 ABS 0 udata_bank8 -
 __Hudata_bank9 0 0 ABS 0 udata_bank9 -
+sol 1D 0 COMRAM 1 udata_acs build/default/production/hextodec.o
 __Hlcd_code 0 0 ABS 0 lcd_code -
-marker 26 0 COMRAM 1 udata_acs build/default/production/LDR.o
-__Ludata_acs_ovr 27 0 COMRAM 1 udata_acs_ovr -
-best_high_word 24 0 COMRAM 1 udata_acs build/default/production/LDR.o
-LCD_Write_Hex 1FCFC 0 CODE 0 lcd_code build/default/production/LCD.o
+marker 34 0 COMRAM 1 udata_acs build/default/production/LDR.o
+part1 19 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+part2 1A 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+part3 1B 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+part4 1C 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+__Ludata_acs_ovr 35 0 COMRAM 1 udata_acs_ovr -
+best_high_word 32 0 COMRAM 1 udata_acs build/default/production/LDR.o
+LCD_Write_Hex 1FCEE 0 CODE 0 lcd_code build/default/production/LCD.o
 __Hadc_code 0 0 ABS 0 adc_code -
-__Hudata_acs_ovr 28 0 COMRAM 1 udata_acs_ovr -
+__Hudata_acs_ovr 36 0 COMRAM 1 udata_acs_ovr -
 initial_setup 1FDB6 0 CODE 0 routine_code build/default/production/routine.o
-best_low_word 23 0 COMRAM 1 udata_acs build/default/production/LDR.o
+best_low_word 31 0 COMRAM 1 udata_acs build/default/production/LDR.o
 __Hmotor_code 0 0 ABS 0 motor_code -
 __Hudata_bank10 0 0 ABS 0 udata_bank10 -
 __Hudata_bank11 0 0 ABS 0 udata_bank11 -
@@ -638,8 +761,8 @@ __Hudata_bank12 0 0 ABS 0 udata_bank12 -
 __Hudata_bank13 0 0 ABS 0 udata_bank13 -
 __Hudata_bank14 0 0 ABS 0 udata_bank14 -
 __Hudata_bank15 0 0 ABS 0 udata_bank15 -
-ADC_Setup 1FBCE 0 CODE 0 adc_code build/default/production/ADC.o
-LDR_compare_loop 1FBF6 0 CODE 0 routine_code build/default/production/LDR.o
+ADC_Setup 1FAD0 0 CODE 0 adc_code build/default/production/ADC.o
+LDR_compare_loop 1FAF8 0 CODE 0 routine_code build/default/production/LDR.o
 __Lmotor_code 0 0 ABS 0 motor_code -
 isa$xinst 0 0 ABS 0 - build/default/production/main.o
 __Hedata 0 0 ABS 0 edata -
@@ -651,25 +774,30 @@ __Hcode 0 0 ABS 0 code -
 __Hdata 0 0 ABS 0 data -
 __Lcode 0 0 ABS 0 code -
 __Ldata 0 0 ABS 0 data -
+RES0 11 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+RES1 10 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+RES2 12 0 COMRAM 1 udata_acs build/default/production/hextodec.o
+RES3 13 0 COMRAM 1 udata_acs build/default/production/hextodec.o
 __S0 20000 0 ABS 0 - -
-__S1 28 0 ABS 0 - -
+__S1 36 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-test 25 0 COMRAM 1 udata_acs build/default/production/LDR.o
+test 33 0 COMRAM 1 udata_acs build/default/production/LDR.o
 __Ludata_bank10 0 0 ABS 0 udata_bank10 -
 __Ludata_bank11 0 0 ABS 0 udata_bank11 -
 __Ludata_bank12 0 0 ABS 0 udata_bank12 -
 __Ludata_bank13 0 0 ABS 0 udata_bank13 -
 __Ludata_bank14 0 0 ABS 0 udata_bank14 -
 __Ludata_bank15 0 0 ABS 0 udata_bank15 -
-ADC_Read 1FBE4 0 CODE 0 adc_code build/default/production/ADC.o
-start_LDR 1FBEC 0 CODE 0 routine_code build/default/production/LDR.o
+ADC_Read 1FAE6 0 CODE 0 adc_code build/default/production/ADC.o
+start_LDR 1FAEE 0 CODE 0 routine_code build/default/production/LDR.o
 __Lconfig 0 0 CONFIG 4 config -
-LCD_Write_Message 1FD1A 0 CODE 0 lcd_code build/default/production/LCD.o
-pulse_length1 11 0 COMRAM 1 udata_acs build/default/production/main.o
-pulse_length2 12 0 COMRAM 1 udata_acs build/default/production/main.o
+LCD_Write_Message 1FD0C 0 CODE 0 lcd_code build/default/production/LCD.o
+pulse_length1 1F 0 COMRAM 1 udata_acs build/default/production/main.o
+pulse_length2 20 0 COMRAM 1 udata_acs build/default/production/main.o
 isa$std 1 0 ABS 0 - build/default/production/main.o
 __Hroutine_code 0 0 ABS 0 routine_code -
-LCD_Setup 1FCA6 0 CODE 0 lcd_code build/default/production/LCD.o
+LCD_Setup 1FC98 0 CODE 0 lcd_code build/default/production/LCD.o
+LCD_clear 1FD58 0 CODE 0 lcd_code build/default/production/LCD.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
@@ -688,15 +816,16 @@ __Ludata_bank8 0 0 ABS 0 udata_bank8 -
 __Ludata_bank9 0 0 ABS 0 udata_bank9 -
 long_move1 1FF78 0 CODE 0 routine_code build/default/production/routine.o
 long_move2 1FFA6 0 CODE 0 routine_code build/default/production/routine.o
-motor_Setup 1FC40 0 CODE 0 motor_code build/default/production/motor_control.o
+motor_Setup 1FB42 0 CODE 0 motor_code build/default/production/motor_control.o
 __Llcd_code 0 0 ABS 0 lcd_code -
 secondary_loop 1FDEE 0 CODE 0 routine_code build/default/production/routine.o
 __Hudata_acs 0 0 ABS 0 udata_acs -
 __Lroutine_code 0 0 ABS 0 routine_code -
 best_position1 2 0 COMRAM 1 udata_acs build/default/production/routine.o
 best_position2 3 0 COMRAM 1 udata_acs build/default/production/routine.o
-move_motor1 1FC4E 0 CODE 0 motor_code build/default/production/motor_control.o
-move_motor2 1FC64 0 CODE 0 motor_code build/default/production/motor_control.o
+move_motor1 1FB50 0 CODE 0 motor_code build/default/production/motor_control.o
+move_motor2 1FB66 0 CODE 0 motor_code build/default/production/motor_control.o
+hextodec 1FBA8 0 CODE 0 routine_code build/default/production/hextodec.o
 count2 1 0 COMRAM 1 udata_acs build/default/production/routine.o
 __Ludata_acs 0 0 ABS 0 udata_acs -
 # %SPLITSTAB Section
@@ -723,12 +852,13 @@ __Ludata_acs 0 0 ABS 0 udata_acs -
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-adc_code 0 1FBCE 1FBCE 1E 1
+adc_code 0 1FAD0 1FAD0 1E 1
 routine_code 0 1FDB6 1FDB6 24A 1
-udata_acs 1 0 0 28 1
-lcd_code 0 1FCA6 1FCA6 110 1
-routine_code%259 0 1FBEC 1FBEC 54 1
-motor_code 0 1FC40 1FC40 66 1
+udata_acs 1 0 0 36 1
+lcd_code 0 1FC98 1FC98 11E 1
+routine_code%291 0 1FBA8 1FBA8 F0 1
+routine_code%293 0 1FAEE 1FAEE 54 1
+motor_code 0 1FB42 1FB42 66 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal
