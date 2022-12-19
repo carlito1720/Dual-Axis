@@ -1,6 +1,6 @@
 #include <xc.inc>
 
-global  start_LDR, LDR_compare_loop, best_high_word, best_low_word, test, marker
+global  LDR_compare_loop, best_high_word, best_low_word, test, marker
    
 extrn	move_motor1, move_motor2, ADC_Read, ADC_Setup, pulse_length1, pulse_length2, motor_Setup
 
@@ -12,28 +12,21 @@ test:	       ds 1 ; reserve one byte to test if the high word was changed so tha
 change_marker: ds 1 ; reserve 1 byte as marker for a change in the best 'luminosity' value   
 psect	routine_code, class=CODE
     
-start_LDR:		; read in value of LDR from port RA0
-	movf	ADRESH, W, A		; read in high word
-	movwf	best_high_word, A
-	movf	ADRESL, W, A
-	movwf	best_low_word, A
-	return
 	
 LDR_compare_loop:
-	movlw	0x00
+	movlw	0x00	;set both markers to 0
 	movwf	test, A
 	movwf	change_marker, A
 	movf	ADRESH, W, A
-	cpfseq	best_high_word, A
-	call	comp
-	movlw	0x01
+	cpfseq	best_high_word, A	; check if the high words are the same
+	call	comp			; if not check if high word is bigger
+	movlw	0x01			; check if the the high word and low word has been changed
 	cpfseq	test, A
-	call	low_word_comp
+	call	low_word_comp		; if not check if the low word is larger if the high word is equal
 	return
 	
 	
-comp:
-	
+comp:	; check if the high word is high and change high and low word if so ( also change maker to 1)
 	movf	ADRESH, W, A
 	cpfslt	best_high_word, A
 	return
@@ -45,13 +38,11 @@ comp:
 	movwf	test, A
 	return
 	
-high_word_comp:
-	movwf	best_high_word, A
-	movf	ADRESL, W, A
-	movwf	best_low_word, A
-	
+
+low_word_comp:	; if the high words are equal and the new low word is higher change low word
+	movf	ADRESH, W, A
+	cpfseq	best_high_word, A
 	return
-low_word_comp:
 	movf	ADRESL, W, A
 	nop
 	nop
@@ -59,9 +50,10 @@ low_word_comp:
 	call	low_word_change
 	return
 
-low_word_change:
+low_word_change:	; change the best low word and change the marker to 1 
 	movwf	best_low_word, A
 	movlw	0x01
 	movwf	change_marker
 	return
+	
 end
