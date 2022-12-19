@@ -7,11 +7,11 @@ extrn	pulse_length1, pulse_length2
     
 	
 psect	udata_acs   ; reserve data space in access ram
-motor_cnt_l:	ds 1	; reserve 1 byte for variable LCD_cnt_l
-motor_cnt_h:	ds 1	; reserve 1 byte for variable LCD_cnt_h
+motor_cnt_l:	ds 1	; reserve 1 byte for variable motor_cnt_l
+motor_cnt_h:	ds 1	; reserve 1 byte for variable motor_cnt_h
 motor_cnt_ms:	ds 1	; reserve 1 byte for ms counter
 motor_tmp:	ds 1	; reserve 1 byte for temporary use
-motor_counter:	ds 1	; reserve 1 byte for counting through nessage
+motor_counter:	ds 1	; reserve 1 byte for counting through message
 
 
 
@@ -22,17 +22,17 @@ psect	motor_code, class=CODE
 motor_Setup:	bcf	CFGS	; point to Flash program memory  
 	bsf	EEPGD 	; access Flash program memory
 	movlw	0x00
-	movwf	TRISE, A ;setup port C as output
+	movwf	TRISE, A ;setup port E as output
 	movlw	0x00
-	movwf	TRISD, A  ;setup port 2 as output
+	movwf	TRISD, A  ;setup port D as output
 	return
 	
 move_motor1:
 	
 	movlw   0xFF
 	movwf   PORTE, A	;send duty cycle pulse
-	movf    pulse_length1, W, A	;wait the give time to go to position
-	call    motor_delay_ms
+	movf    pulse_length1, W, A	; set the length of the duty cycle
+	call    motor_delay_ms		; make a delay of that length
 	movlw   0x00	; reset to 0 to complete PWM signal
 	movwf   PORTE, A
 	movlw   19
@@ -44,8 +44,8 @@ move_motor2:
 
 	movlw   0xFF
 	movwf   PORTD, A	;send duty cycle pulse
-	movf    pulse_length2, W, A	;wait the give time to go to position
-	call    motor_delay_ms
+	movf    pulse_length2, W, A	; set the length of the duty cycle
+	call    motor_delay_ms		; make a delay of that length
 	movlw   0x00	; reset to 0 to complete PWM signal
 	movwf   PORTD, A
 	movlw   19
@@ -55,7 +55,7 @@ move_motor2:
     
 
     
-    
+    ;;delay routines to create the correct PWM cycle
     
 motor_delay_ms:		    ; delay given in ms in W
 	movwf	motor_cnt_ms, A
